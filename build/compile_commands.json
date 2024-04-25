@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/28275/Desktop/algebra/build",
+  "command": "D:\\MinGW\\bin\\gcc.exe  @CMakeFiles/main.dir/includes_C.rsp -g -o CMakeFiles\\main.dir\\src\\algebra.obj -c C:\\Users\\28275\\Desktop\\algebra\\src\\algebra.c",
+  "file": "C:/Users/28275/Desktop/algebra/src/algebra.c",
+  "output": "CMakeFiles/main.dir/src/algebra.obj"
+},
+{
+  "directory": "C:/Users/28275/Desktop/algebra/build",
+  "command": "D:\\MinGW\\bin\\gcc.exe  @CMakeFiles/main.dir/includes_C.rsp -g -o CMakeFiles\\main.dir\\src\\main.obj -c C:\\Users\\28275\\Desktop\\algebra\\src\\main.c",
+  "file": "C:/Users/28275/Desktop/algebra/src/main.c",
+  "output": "CMakeFiles/main.dir/src/main.obj"
+}
+]
