@@ -181,6 +181,7 @@ Matrix inv_matrix(Matrix a)
             m.data[i][j] = minus_one_pow(i+j)*det_matrix(ad_matrix(a,j,i))/det;
         }
     }
+    return m;
     //create_matrix();
 }
 
