@@ -178,7 +178,9 @@ Matrix inv_matrix(Matrix a)
     {
         for(int j = 0;j<n;j++)
         {
-            m.data[i][j] = minus_one_pow(i+j)*det_matrix(ad_matrix(a,j,i))/det;
+            if(det_matrix(ad_matrix(a,j,i)==0)) m.data[i][j] = 0;
+            else
+                m.data[i][j] = minus_one_pow(i+j)*det_matrix(ad_matrix(a,j,i))/det;
         }
     }
     return m;
