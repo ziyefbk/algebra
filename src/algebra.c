@@ -166,9 +166,13 @@ double det_matrix(Matrix a)
 Matrix inv_matrix(Matrix a)
 {
     // ToDo
-    if(det_matrix(a)==0||a.cols!=a.rows)
+    if(a.cols!=a.rows)
     {
         printf("Error: The matrix must be a square matrix.\n");
+        return create_matrix(0, 0);
+    }
+    if(det_matrix(a)==0){
+        printf("Error: The matrix is singular.\n");
         return create_matrix(0, 0);
     }
     double det = det_matrix(a);
