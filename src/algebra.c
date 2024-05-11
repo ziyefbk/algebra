@@ -194,7 +194,58 @@ Matrix inv_matrix(Matrix a)
 int rank_matrix(Matrix a)
 {
     // ToDo
-    return 0;
+    if(a.cols!=a.rows)
+    {
+        printf("Error: The matrix must be a square matrix.\n");
+    }else{
+        int n = a.cols,tail = n-1;
+        for(int i = 0;i<n;i++){
+            if(a.data[i][i]!=0){
+                for(int j = i+1;j<n;j++){
+                    for(int k = i+1;k<n;k++){
+                        a.data[j][k]-=a.data[i][k]*a.data[j][i]/a.data[i][i];
+                    }
+                    a.data[j][i] = 0;
+                }
+                // print_matrix(a);
+                // printf("\n");
+            }else{
+                int j;
+                for(j = i+1;j<n;j++)
+                {
+                    if(a.data[j][i]!=0){
+                        double temp;
+                        for(int k = 0;k<n;k++){
+                            temp = a.data[i][k];
+                            a.data[i][k] = a.data[j][k];
+                            a.data[j][k] = temp;
+                        }
+                        i--;
+                        break;
+                    }
+                }
+                //printf("j = %d i = %d\n",j,i);
+                // print_matrix(a);
+                // printf("\n");
+                if(j==n)
+                {
+                    if(tail<=i) return i;
+                    double temp;
+                    for(int k = 0;k<n;k++){
+                        temp = a.data[k][i];
+                        a.data[k][i] = a.data[k][tail];
+                        a.data[k][tail] = temp;
+                    }
+                    tail--;
+                    i--;
+                  //  printf("tail = %d i = %d\n",tail,i);
+                    // print_matrix(a);
+                    // printf("\n");
+                }
+            }
+        }
+        return n;
+    }
 }
 
 double trace_matrix(Matrix a)
