@@ -194,16 +194,15 @@ Matrix inv_matrix(Matrix a)
 int rank_matrix(Matrix a)
 {
     // ToDo
-    if(a.cols!=a.rows)
-    {
-        printf("Error: The matrix must be a square matrix.\n");
-        return 0;
-    }else{
-        int n = a.cols,tail = n-1;
-        for(int i = 0;i<n;i++){
+        int clo,row,n,tail;
+        clo = a.cols;
+        row = a.rows;
+        n = clo<row?clo:row;
+        tail = clo-1;
+        for(int i = 0;i<row;i++){
             if(a.data[i][i]!=0){
-                for(int j = i+1;j<n;j++){
-                    for(int k = i+1;k<n;k++){
+                for(int j = i+1;j<row;j++){
+                    for(int k = i+1;k<clo;k++){
                         a.data[j][k]-=a.data[i][k]*a.data[j][i]/a.data[i][i];
                     }
                     a.data[j][i] = 0;
@@ -212,11 +211,11 @@ int rank_matrix(Matrix a)
                 // printf("\n");
             }else{
                 int j;
-                for(j = i+1;j<n;j++)
+                for(j = i+1;j<row;j++)
                 {
                     if(a.data[j][i]!=0){
                         double temp;
-                        for(int k = 0;k<n;k++){
+                        for(int k = 0;k<clo;k++){
                             temp = a.data[i][k];
                             a.data[i][k] = a.data[j][k];
                             a.data[j][k] = temp;
@@ -228,11 +227,11 @@ int rank_matrix(Matrix a)
                 //printf("j = %d i = %d\n",j,i);
                 // print_matrix(a);
                 // printf("\n");
-                if(j==n)
+                if(j==row)
                 {
                     if(tail<=i) return i;
                     double temp;
-                    for(int k = 0;k<n;k++){
+                    for(int k = 0;k<clo;k++){
                         temp = a.data[k][i];
                         a.data[k][i] = a.data[k][tail];
                         a.data[k][tail] = temp;
@@ -246,7 +245,7 @@ int rank_matrix(Matrix a)
             }
         }
         return n;
-    }
+    
 }
 
 double trace_matrix(Matrix a)
