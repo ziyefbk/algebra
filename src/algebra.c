@@ -197,6 +197,7 @@ int rank_matrix(Matrix a)
     if(a.cols!=a.rows)
     {
         printf("Error: The matrix must be a square matrix.\n");
+        return 0;
     }else{
         int n = a.cols,tail = n-1;
         for(int i = 0;i<n;i++){
